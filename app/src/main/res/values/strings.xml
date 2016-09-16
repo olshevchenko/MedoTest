@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">MedoTest</string>
+
+    <!-- OnBoarding -->
+    <string name="section_message_1">
+        Опишите проблему\nсо здоровьем и врач\nсам найдёт вас.
+    </string>
+    <string name="section_message_2">
+        Получите медицинскую\nонлайн-консультацию, находясь\nв любой точке мира.
+    </string>
+    <string name="section_message_3">
+        Получите врачебный\nпротокол по результатам\nконсультации.
+    </string>
+    <string-array name="section_messages_text_array">
+        <item>@string/section_message_1</item>
+        <item>@string/section_message_2</item>
+        <item>@string/section_message_3</item>
+    </string-array>
+
+    <!-- Login and Registration -->
+    <string name="ACCOUNT_TYPE">com.example.ol.medotest</string>
+
+    <string name="prompt_phone_number">"+7 912 3456789"</string>
+    <string name="prompt_password">Введите пароль</string>
+    <string name="prompt_newpassword">Придумайте пароль</string>
+    <string name="prompt_repeat_newpassword">Повторите пароль</string>
+
+    <string name="remember_me">Запомнить меня</string>
+    <string name="start_button_text">НАЧАТЬ</string>
+    <string name="login_button_text">ВОЙТИ</string>
+    <string name="register_button_text">РЕГИСТРАЦИЯ</string>
+    <string name="sendsms_button_text">ОТПРАВИТЬ СМС</string>
+    <string name="sendsms2_button_text">ОТПРАВИТЬ СМС ПОВТОРНО</string>
+    <string name="confirm_button_text">ПОДТВЕРДИТЬ КОД</string>
+    <string name="send_button_text">ОТПРАВИТЬ</string>
+    <string name="title_activity_login2">Sign in</string>
+
+    <string name="smssent_text">\tНа указанный Вами номер отправлено смс-сообщение с кодом.
+        Код будет активен в течение %1$d секунд.\n\tПри неполучении смс Вы можете отправить
+        его повторно.
+    </string>
+
+    <string name="smscode_text">Код для регистрации в программе Patient Service: %1$d.
+    </string>
+
+    <string name="forget_password">
+        <a href="http://medotrade.ru"><u>Забыли пароль?</u></a>
+    </string>
+
+    <string name="useragreement_text">Зарегистрировавшись, вы соглашаетесь с:</string>
+    <string name="useragreement_link1">
+        <a href="http://medotrade.ru"><u>политикой конфиденциальности</u></a>
+    </string>
+    <string name="useragreement_link2">
+        <a href="http://medotrade.ru"><u>условиями предоставления услуг</u></a>
+    </string>
+
+    <!-- Errors / informing text strings -->
+    <string name="error_invalid_password">Слишком короткий пароль</string>
+    <string name="error_incorrect_password">Неверный пароль</string>
+
+    <string name="dlgPasswordInputErrorTitle">Ошибка ввода пароля</string>
+    <string name="dlgPasswordInputErrorMessage">Вводимый пароль слишком короток / не содержит одновременно буквы и цифры.</string>
+
+    <string name="dlgPasswordInvalidTitle">Ошибка проверки пароля</string>
+    <string name="dlgPasswordInvalidMessage">Введён неверный пароль. Проверьте ещё раз.</string>
+
+    <string name="dlgSmsCodeInvalidTitle">Ошибка проверки СМС-кода</string>
+    <string name="dlgSmsCodeInvalidMessage">Введён неверный СМС-код. Проверьте ещё раз.</string>
+
+    <string name="dlgAccountAdditionErrorTitle">Ошибка регистрации номера пользователя</string>
+    <string name="dlgAccountAdditionErrorMessage">Ошибка аутентификации / сетевая ошибка. Попробуйте ещё раз.</string>
+
+    <string name="dlgAccountAdditionWarningTitle">Отказ в регистрации номера пользователя</string>
+    <string name="dlgAccountAdditionWarningMessage">Номер телефона совпадает с уже зарегистрированным.</string>
+
+    <!-- Toasts -->
+    <string name="tstAccountAdditionSucceeded">Номер пользователя успешно сохранён...</string>
+    <string name="tstSeeYaNextTime">Здесь будет переход в основное приложение...</string>
+
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <bitmap
+            android:gravity="left|top"
+            android:src="@drawable/bg_left">
+        </bitmap>
+    </item>
+    <item>
+        <bitmap
+            android:gravity="right|bottom"
+            android:src="@drawable/bg_right">
+        </bitmap>
+    </item>
+</layer-list>

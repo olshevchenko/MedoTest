@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1C86FF</color>
+    <color name="colorPrimaryTransparent">#801C86FF</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#EC407A</color>
+    <color name="colorBackground">#FFFFFF</color>
+
+    <color name="colorOnBoardingInfo">#7C848C</color>
+    <color name="colorPagerIndicator">#57A5FF</color>
+    <color name="colorPagerIndicatorDark">#1977E2</color>
+    <color name="colorButtonText">#FFFFFF</color>
+
+</resources>

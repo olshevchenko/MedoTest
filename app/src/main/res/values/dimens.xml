@@ -1,0 +1,57 @@
+<resources>
+
+    <!-- ALL values're based on design doc impementing for HD 4.7 (xhdpi) screen" -->
+    <!-- used density multiplier 2 (320 DPI) -->
+    <dimen name="logo_top_margin">12dp</dimen>
+
+    <!-- Landing activity screen margins & sizes -->
+    <dimen name="onboarding13_top_margin">24dp</dimen>
+
+    <!-- from screen top (logo_top_margin + logo height (86dp) + onboarding13_top_margin)-->
+    <dimen name="onboarding13_top_fullmargin">122dp</dimen>
+
+    <dimen name="onboarding2_top_margin">30dp</dimen>
+    <dimen name="onboarding2_top_fullmargin">128dp</dimen>
+    <dimen name="onboardinginfo_top_margin">18dp</dimen>
+    <dimen name="pagerindicator_top_margin">24dp</dimen>
+    <dimen name="pagerindicator_internal_margin">11dp</dimen>
+    <dimen name="pagerindicator_bottom_margin">18dp</dimen>
+
+    <!-- from screen bottom (startbutton_bottom_margin + button_height + pagerindicator_bottom_margin)-->
+    <dimen name="pagerindicator_bottom_fullmargin">90dp</dimen>
+    <dimen name="startbutton_bottom_margin">24dp</dimen>
+
+    <!-- Login activity screen margins & sizes -->
+    <dimen name="login_info_horiz_padding">48dp</dimen>
+    <dimen name="login_phone_top_margin">30dp</dimen>
+    <dimen name="login_phoneicon_horiz_margin">18dp</dimen>
+    <dimen name="login_phonenumber_horiz_margin">12dp</dimen>
+    <dimen name="login_password_top_margin">24dp</dimen>
+    <dimen name="login_forgetremember_top_margin">42dp</dimen>
+    <dimen name="login_rememberswitch_padding">6dp</dimen>
+    <dimen name="login_loginbutton_top_margin">60dp</dimen>
+    <dimen name="login_registerbutton_top_margin">18dp</dimen>
+
+    <!-- Register activity screen margins & sizes -->
+    <dimen name="register_smssenttext_top_margin">12dp</dimen>
+    <dimen name="register_sendsmsbutton_top_margin">12dp</dimen>
+    <dimen name="register_smscode_top_margin">30dp</dimen>
+    <dimen name="register_confirmcodebutton_top_margin">12dp</dimen>
+    <dimen name="register_useragreementtext_top_margin">30dp</dimen>
+
+    <!-- Register activity screen margins & sizes -->
+    <dimen name="password_validsign_horiz_margin">12dp</dimen>
+    <dimen name="password_loginbutton_top_margin">60dp</dimen>
+
+    <!-- Text sizes -->
+    <dimen name="onboardinginfo_text_size">16sp</dimen>
+    <dimen name="logininfo_text_size">12sp</dimen>
+    <dimen name="useragreement_text_size">10sp</dimen>
+
+    <dimen name="button_width">288dp</dimen>
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_text_size">16sp</dimen>
+
+    <!-- Login activity screen margins -->
+    <dimen name="logo_start_margin">318dp</dimen>
+</resources>

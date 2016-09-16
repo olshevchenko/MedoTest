@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OnBoardingActivity$PlaceholderFragment"
+    android:fitsSystemWindows="true">
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/logo_top_margin"
+        android:layout_gravity="top|center_horizontal"
+        android:src="@drawable/logo"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+    </android.support.v4.view.ViewPager>
+
+    <Button
+        android:id="@+id/btStart"
+        android:layout_marginBottom="@dimen/startbutton_bottom_margin"
+        style="@style/AccentButtonStyle"
+        android:text="@string/start_button_text"
+        android:layout_gravity="bottom|center_horizontal"/>
+
+    <include
+        android:id="@+id/rlPagerIndicator"
+        android:layout_above="@id/btStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/pagerindicator_bottom_fullmargin"
+        layout="@layout/pager_indicators"
+        android:layout_gravity="bottom|center_horizontal"/>
+
+</FrameLayout>

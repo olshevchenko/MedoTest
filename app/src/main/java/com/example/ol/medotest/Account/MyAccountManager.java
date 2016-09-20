@@ -10,6 +10,9 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by ol on 9/5/16.
  */
@@ -41,9 +44,11 @@ public class MyAccountManager {
   private static String authToken = "";
   private static String authTokenType = "";
 
+  /// all stored numbers here on the device (by AccountManager)
+  private static List<String> accNames = null;
+
   /// from prev. session
   private static Account accLast = null;
-  private static String accLastName = "";
 
   /// current, just entered
   private static String accNewName = "";
@@ -55,7 +60,7 @@ public class MyAccountManager {
     MyAccountManager.accType = accType;
     am = AccountManager.get(context);
     obtainLastAccData();
-    toStoreData = (! accLastName.equals("")); /// store user if we already have account here..
+    toStoreData = !accNames.isEmpty(); /// store user if we already have account here..
     instance = new MyAccountManager();
   }
 
@@ -69,15 +74,17 @@ public class MyAccountManager {
     if (am == null)
       return;
     Account[] accounts = am.getAccountsByType(accType);
-    if (accounts.length != 0) {
-      accLast = accounts[accounts.length-1];
-      /// get the phone from the last (=>freshest) account
-      accLastName = accLast.name;
-    }
+    if (accounts.length == 0)
+      return;
+    accNames = new ArrayList<>(accounts.length);
+    for (int i=0; i< accounts.length; i++)
+      accNames.add(accounts[i].name);
+
+    accLast = accounts[accounts.length-1];
   }
 
-  public String getLastNumber() {
-    return accLastName;
+  public List<String> getAllNumbers() {
+    return accNames;
   }
 
   public String getNumber() {
@@ -119,8 +126,8 @@ public class MyAccountManager {
       return AddAccountRes.NOT_TO_STORE;
     if (accNewName == null)
       return AddAccountRes.NULLED_NUMBER;
-    if (accNewName.equals(accLastName))
-      return AddAccountRes.EQUAL_NUMBERS; ///new account number is the same with the last (stored) one
+    if (accNames.contains(accNewName))
+      return AddAccountRes.EQUAL_NUMBERS; ///new account number is the same with the stored one
     /// start to add account
     am.addAccount(accType, authToken, null, null, activity, accountManagerCallback, null);
     return AddAccountRes.STARTING;
@@ -129,36 +136,14 @@ public class MyAccountManager {
   /**
    * internal call from AccountAuthenticatorActivity to execute account adding
    */
-  @SuppressWarnings("deprecation")
   public void storeAccount() {
-    if (accLast == null) {
-      /// initial account adding
-      myAddAccountAndSetToken(accNewName, accType);
-    } else {
-      /// need to rename original account
-      if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-        /// remove, then add
-        am.removeAccount(
-            accLast,
-            new AccountManagerCallback<Boolean>() {
-              @Override
-              public void run(AccountManagerFuture<Boolean> accountManagerFuture) {
-                myAddAccountAndSetToken(accNewName, accType);
-              }
-            },
-            null);
-      } else {
-        /// simply rename
-        myRenameAccount(accLast, accNewName); /// create one-line method to prevent strange static analyzer inspections..
-      }
-    }
+    Account accNew = new Account(accNewName, accType);
+    am.addAccountExplicitly(accNew, null, null);
+    am.setAuthToken(accNew, authTokenType, authToken);
     obtainLastAccData(); /// refresh accLast record etc..
   }
 
   private void myAddAccountAndSetToken(String name, String type) {
-    Account accNew = new Account(name, type);
-    am.addAccountExplicitly(accNew, null, null);
-    am.setAuthToken(accNew, authTokenType, authToken);
   }
 
   @TargetApi(Build.VERSION_CODES.LOLLIPOP)

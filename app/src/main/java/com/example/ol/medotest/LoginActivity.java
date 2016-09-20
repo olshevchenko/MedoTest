@@ -7,10 +7,11 @@ import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -23,7 +24,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
   private Resources res = null;
   private MyAccountManager mam;
-  private EditText etPhoneNumber = null;
+  private AutoCompleteTextView etPhoneNumber = null;
   private EditText etPassword;
   private boolean toShowPassword = false;
 
@@ -48,19 +49,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
       tvForgetLink.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
-    etPhoneNumber = (EditText) findViewById(R.id.etPhoneNumber);
+    ArrayAdapter<String> numbersAdapter = new ArrayAdapter<>(this,
+        android.R.layout.simple_dropdown_item_1line, mam.getAllNumbers());
+    etPhoneNumber = (AutoCompleteTextView) findViewById(R.id.etPhoneNumber);
     if (etPhoneNumber != null) {
+      etPhoneNumber.setAdapter(numbersAdapter);
       /// format input numbers
       etPhoneNumber.addTextChangedListener(new PhoneNumberTextWatcher(btLogin));
 
       /// fill input field with number
-      String phone_number = mam.getLastNumber(); /// got number from past sessions
+      String phone_number = mam.getNumber(); /// got number from current sessions
       if (phone_number.length() > 0)
-        etPhoneNumber.setText(phone_number); /// suggest to use previous one
+        /// seldom, but possible - if we're back from Register Activity with number entered already
+        etPhoneNumber.setText(phone_number);
       else
         etPhoneNumber.setHint(res.getString(R.string.prompt_phone_number)); /// just hint
     }
-
 
     etPassword = (EditText) findViewById(R.id.etPassword);
     if (null != etPassword) {

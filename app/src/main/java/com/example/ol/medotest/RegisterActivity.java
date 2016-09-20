@@ -11,6 +11,8 @@ import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -29,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
   private Resources res = null;
   private String sendSmsAgain;
   private MyAccountManager mam;
-  private EditText etPhoneNumber = null;
+  private AutoCompleteTextView etPhoneNumber = null;
   private TextView tvSmsSent = null;
   private Button btSendSms = null;
   private RelativeLayout rlSms = null;
@@ -59,15 +61,18 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     btSendSms = (Button) findViewById(R.id.btSendSms);
     btSendSms.setOnClickListener(this);
 
-    etPhoneNumber = (EditText) findViewById(R.id.etPhoneNumber);
+    ArrayAdapter<String> numbersAdapter = new ArrayAdapter<>(this,
+        android.R.layout.simple_dropdown_item_1line, mam.getAllNumbers());
+    etPhoneNumber = (AutoCompleteTextView) findViewById(R.id.etPhoneNumber);
     if (etPhoneNumber != null) {
+      etPhoneNumber.setAdapter(numbersAdapter);
       /// format input numbers
       etPhoneNumber.addTextChangedListener(new PhoneNumberTextWatcher(btSendSms));
 
       /// fill input field with number
-      String phone_number = mam.getNumber(); /// got number entered on LoginActivity screen
+      String phone_number = mam.getNumber(); /// got number currently (e.g. on LoginActivity) entered
       if (phone_number.length() > 0)
-        etPhoneNumber.setText(phone_number); /// have one newly entered at Login page
+        etPhoneNumber.setText(phone_number);
       else
         etPhoneNumber.setHint(res.getString(R.string.prompt_phone_number)); /// just hint
     }
@@ -165,11 +170,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                   R.drawable.ic_error_black_24dp);
           eiDialogFragment.show(getFragmentManager(), "dialog");
 
-//ToDo remove it!
-          Toast toast = Toast.makeText(this, "code:" + String.valueOf(smsCode), Toast.LENGTH_LONG);
-          toast.setGravity(Gravity.CENTER, 0, 0);
-          toast.show();
-
+          if (BuildConfig.BUILD_TYPE.contentEquals("debug")) {
+            Toast toast = Toast.makeText(this, "code:" + String.valueOf(smsCode), Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+          }
           etSmsCode.requestFocus();
         }
         break;

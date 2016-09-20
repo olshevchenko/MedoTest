@@ -30,7 +30,7 @@ public class PhoneNumberTextWatcher extends PhoneNumberFormattingTextWatcher {
   public void afterTextChanged(Editable s) {
     super.afterTextChanged(s);
     if (pat.matcher(s.toString()).matches())
-      /// there's a correct well-formated phone number - we might use it now..
+      /// there's a correct well-formatted phone number - we might use it now..
       btAction.setEnabled(true);
     else
       btAction.setEnabled(false);

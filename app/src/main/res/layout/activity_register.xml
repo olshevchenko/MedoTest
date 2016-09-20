@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/login_phoneicon_horiz_margin"
             android:src="@drawable/ic_phone"/>
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/etPhoneNumber"
             android:layout_toRightOf="@id/ivPhoneIcon"
             android:layout_marginLeft="@dimen/login_phonenumber_horiz_margin"

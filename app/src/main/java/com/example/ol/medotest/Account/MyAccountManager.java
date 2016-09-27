@@ -74,9 +74,9 @@ public class MyAccountManager {
     if (am == null)
       return;
     Account[] accounts = am.getAccountsByType(accType);
+    accNames = new ArrayList<>(accounts.length);
     if (accounts.length == 0)
       return;
-    accNames = new ArrayList<>(accounts.length);
     for (int i=0; i< accounts.length; i++)
       accNames.add(accounts[i].name);
 
